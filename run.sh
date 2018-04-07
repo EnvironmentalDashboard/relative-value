@@ -1,5 +1,5 @@
 #!/bin/bash
 
 docker build -t relative-value-img . # build image, tag with relative-value-img
-docker run -it --rm -p 3306:3306 --name relative-value-container relative-value-img # run container from image
+docker run -dit --restart unless-stopped -p 3306:3306 --name relative-value-container relative-value-img # run container from image
 # if using gdb, need to add `--cap-add=SYS_PTRACE --security-opt seccomp=unconfined` to docker run, see https://stackoverflow.com/a/46676907/2624391
