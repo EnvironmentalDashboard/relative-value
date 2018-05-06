@@ -1,2 +1,0 @@
-* * * * * /src/relative_value >/src/out 2>&1
-# need blank line at the end for valid crontab
