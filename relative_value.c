@@ -3,7 +3,7 @@
  */
 #define _XOPEN_SOURCE // for strptime
 #define _GNU_SOURCE // for strptime
-#define TARGET_RECORDS "SELECT DISTINCT grouping, meter_uuid FROM relative_values WHERE grouping != '[]' AND grouping != '' AND grouping IS NOT NULL AND permission IS NOT NULL AND meter_uuid IN (SELECT bos_uuid FROM meters) GROUP BY meter_uuid, grouping ORDER BY AVG(last_updated) ASC"
+#define TARGET_RECORDS "SELECT DISTINCT grouping, meter_uuid FROM relative_values WHERE grouping != '[]' AND grouping != '' AND grouping IS NOT NULL AND permission IS NOT NULL AND meter_uuid IN (SELECT bos_uuid FROM meters WHERE source = 'buildingos') GROUP BY meter_uuid, grouping ORDER BY AVG(last_updated) ASC"
 #define CURRENT_READING1 "SELECT AVG(value) FROM meter_data WHERE meter_id = %d AND resolution = 'live' AND recorded >= %d AND value IS NOT NULL"
 #define CURRENT_READING2 "SELECT current FROM meters WHERE id = %d"
 #define TYPICAL_DATA1 "SELECT value FROM meter_data WHERE meter_id = %d AND value IS NOT NULL AND resolution = '%s' AND HOUR(FROM_UNIXTIME(recorded)) = HOUR(NOW()) AND DAYOFWEEK(FROM_UNIXTIME(recorded)) IN (%s) ORDER BY recorded DESC LIMIT %d"
