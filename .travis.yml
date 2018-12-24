@@ -2,3 +2,7 @@ language: c
 script:
   - gcc tests/test.c
   - ./a.out
+notifications:
+  slack:
+    rooms:
+      - envdash:2Ml8eUe6ZTTOGDCcIHtjDaRb#devops
