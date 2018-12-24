@@ -5,13 +5,16 @@ CFLAGS=-Og -pedantic -std=c99 -Wall -Wextra -ggdb3 -std=gnu11
 LFLAGS=-lcurl
 MYSQL_CONFIG=`mysql_config --cflags --libs`
 
-all: relative_value
+all: main
 
-relative_value: relative_value.o lib/cJSON/cJSON.o
-	$(CC) $(CFLAGS) relative_value.o lib/cJSON/cJSON.o $(MYSQL_CONFIG) -o relative_value $(LFLAGS)
+main: main.o relative_value.o lib/cJSON/cJSON.o
+	$(CC) $(CFLAGS) main.o relative_value.o lib/cJSON/cJSON.o $(MYSQL_CONFIG) -o main $(LFLAGS)
 
-relative_value.o: relative_value.c
-	$(CC) $(CFLAGS) -c relative_value.c $(MYSQL_CONFIG) $(LFLAGS)
+main.o: main.c relative_value.h
+	$(CC) $(CFLAGS) -c main.c $(MYSQL_CONFIG) $(LFLAGS)
+
+relative_value.o: relative_value.c relative_value.h
+	$(CC) $(CFLAGS) -c relative_value.c
 
 clean:
-	rm relative_value *.o
+	rm main *.o
