@@ -8,7 +8,7 @@
 #define ISO8601_FORMAT_EST "%Y-%m-%dT%H:%M:%S-04:00" // EST is -4:00
 #define SMALL_CONTAINER 255 // small fixed-size container for arrays
 #define MED_CONTAINER 510 // just double SMALL_CONTAINER
-#define DRY_RUN 1 // if set to 1, print the calculation instead of updating database
+#define DRY_RUN 0 // if set to 1, print the calculation instead of updating database
 
 #include <stdio.h>
 #include <stdlib.h>
