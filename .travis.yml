@@ -1,4 +1,4 @@
 language: c
 script:
-	- gcc tests/test.c
-	- tests/a.out
+  - gcc tests/test.c
+  - tests/a.out
