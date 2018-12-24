@@ -5,7 +5,7 @@
 #define CURRENT_READING2 "SELECT current FROM meters WHERE id = %d"
 #define TYPICAL_DATA1 "SELECT value FROM meter_data WHERE meter_id = %d AND value IS NOT NULL AND resolution = '%s' AND HOUR(FROM_UNIXTIME(recorded)) = HOUR(NOW()) AND DAYOFWEEK(FROM_UNIXTIME(recorded)) IN (%s) ORDER BY recorded DESC LIMIT %d"
 #define TYPICAL_DATA2 "SELECT value FROM meter_data WHERE meter_id = %d AND value IS NOT NULL AND recorded > %d AND recorded < %d AND resolution = '%s' AND HOUR(FROM_UNIXTIME(recorded)) = HOUR(NOW()) AND DAYOFWEEK(FROM_UNIXTIME(recorded)) IN (%s) ORDER BY value ASC"
-#define ISO8601_FORMAT_EST "%Y-%m-%dT%H:%M:%S-04:00" // EST is -4:00
+#define ISO8601_FORMAT "%Y-%m-%dT%H:%M:%S%z"
 #define SMALL_CONTAINER 255 // small fixed-size container for arrays
 #define MED_CONTAINER 510 // just double SMALL_CONTAINER
 #define DRY_RUN 0 // if set to 1, print the calculation instead of updating database

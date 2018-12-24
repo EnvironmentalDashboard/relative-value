@@ -27,7 +27,7 @@ int compare(const void *a, const void *b) {
  * compare against
  * float array[] = {62.5, 63.0, 65.0, 66.0, 66.5, 70.0};
  * printf("%.3f\n", relative_value(array, 64.0, 6, 0, 100));
- * exit(1); prints 28.571
+ * exit(1); prints 33
  */
 float relative_value(float *typical, float current, int size, int min, int max) {
 	int i, j, k;

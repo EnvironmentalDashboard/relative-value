@@ -99,7 +99,7 @@ void update_meter_rv(MYSQL *conn, char *grouping, char *uuid, int day_of_week, t
 				 */
 				struct tm ltm = {0};
 				time_t epoch = 0;
-				if (strptime(cJSON_GetObjectItem(subitem, "start")->valuestring, ISO8601_FORMAT_EST, &ltm) != NULL) {
+				if (strptime(cJSON_GetObjectItem(subitem, "start")->valuestring, ISO8601_FORMAT, &ltm) != NULL) {
 					ltm.tm_isdst = -1; // Is DST on? 1 = yes, 0 = no, -1 = unknown
 					epoch = mktime(&ltm);
 				} else {

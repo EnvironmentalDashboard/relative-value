@@ -1,5 +1,7 @@
 # relative-value
 
+[![Build Status](https://travis-ci.org/EnvironmentalDashboard/relative-value.svg?branch=master)](https://travis-ci.org/EnvironmentalDashboard/relative-value)
+
 Calculates the relative value (i.e. orb color) for all rows in the relative_values table, each of which corresponds to a meter. Compile with `make all` and manually install the cron or run as a docker container with `./run.sh`. Remember to add the database file, `db.h` which should contain
 
 ```
