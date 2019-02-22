@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND=noninteractive TZ=America/New_York
 RUN apt-get update && \
   apt-get -qq -y install apt-utils build-essential tzdata libcurl4-openssl-dev libmysqlclient-dev gdb && \
