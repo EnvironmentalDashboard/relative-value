@@ -9,6 +9,11 @@
 #include <time.h>
 
 static char t_fmt[26];
+static char *db_server;
+static char *db_user;
+static char *db_pass;
+static char *db_name;
+unsigned int db_port;
 
 /**
  * does the heavy lifting
@@ -148,6 +153,11 @@ void update_meter_rv(MYSQL *conn, char *grouping, char *uuid, int day_of_week, t
 }
 
 int main(void) {
+	db_server = getenv("DB_SERVER");
+	db_user = getenv("DB_USER");
+	db_pass = getenv("DB_PASS");
+	db_name = getenv("DB_NAME");
+	db_port = atoi(getenv("DB_PORT"));
 	time_t t = time(NULL);
 	struct tm *t_info = localtime(&t);
 	strftime(t_fmt, 26, "%Y-%m-%d %H:%M:%S", t_info);
@@ -156,8 +166,8 @@ int main(void) {
 	MYSQL *conn;
 	conn = mysql_init(NULL);
 	// Connect to database
-	if (!mysql_real_connect(conn, DB_SERVER,
-	DB_USER, DB_PASS, DB_NAME, 0, NULL, 0)) {
+	if (!mysql_real_connect(conn, db_server,
+	db_user, db_pass, db_name, db_port, NULL, 0)) {
 		fprintf(stderr, "[%s] Error connecting to database: %s\n", t_fmt, mysql_error(conn));
 		return EXIT_FAILURE;
 	}
