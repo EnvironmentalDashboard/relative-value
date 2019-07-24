@@ -3,7 +3,6 @@
  */
 #include "relative_value.h"
 #include "lib/cJSON/cJSON.h"
-#include "db.h"
 #include <mysql.h>
 #include <string.h>
 #include <time.h>
